@@ -1,4 +1,4 @@
-from connection import Connection
+from models.connection import Connection
 
 class Crud:
 
@@ -9,11 +9,12 @@ class Crud:
         cursor.execute("""
         INSERT INTO contacts 
         (first_name, last_name, phone_number) 
-        VALUES (%s,%s,%s) """,(data["first_name"],data["last_name"],data["phone_number"]))
+        VALUES (%s,%s,%s) """,(data.first_name,data.last_name,data.phone_number))
+        new_id = cursor.lastrowid
         coon.commit()
         cursor.close()
         coon.close()
-        return {"message": "Contact created successfully"}
+        return {"message": "Contact created successfully","id":new_id}
 
 
     @staticmethod
@@ -35,7 +36,7 @@ class Crud:
                 UPDATE contacts
                 SET first_name = %s ,last_name = %s ,phone_number = %s
                 WHERE id  = %s """,
-                (data["first_name"],data["last_name"],data["phone_number"],item_id))
+                (data.first_name,data.last_name,data.phone_number,item_id))
         coon.commit()
         cursor.close()
         cursor.close()
@@ -65,8 +66,10 @@ class Crud:
 
 
 
-
-
+# Crud.get_all_contacts()
+# Crud.create_contact({"first_name":"SSSS","last_name":"dsfdgt","phone_number":"dsafgfsgdddh"})
+# print(Crud.get_all_contacts())
+#
 
 
 
