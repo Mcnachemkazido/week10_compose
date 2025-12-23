@@ -1,4 +1,4 @@
-from models.connection import Connection
+from db.connection import Connection
 
 class Crud:
 
