@@ -14,8 +14,11 @@ app = FastAPI()
 
 @app.post("/contacts")
 def create_contact(data:UserContact):
-    object_contact = Contact(data.first_name,data.last_name,data.phone_number)
-    return Crud.create_contact(object_contact.contact_to_dict())
+    try:
+        object_contact = Contact(data.first_name,data.last_name,data.phone_number)
+        return Crud.create_contact(object_contact.contact_to_dict())
+    except Exception as e:
+        print(e)
 
 
 @app.get("/contacts")
