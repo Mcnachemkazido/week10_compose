@@ -8,8 +8,10 @@ class Crud:
         cursor = coon.cursor()
         cursor.execute("""
         INSERT INTO contacts 
-        (first_name, last_name, phone_number) 
-        VALUES (%s,%s,%s) """,(data.first_name,data.last_name,data.phone_number))
+        (id,first_name, last_name, phone_number) 
+        VALUES (%s,%s,%s,%s) """
+        ,(data["contact_id"],data["first_name"],data["last_name"],data["phone_number"]))
+
         new_id = cursor.lastrowid
         coon.commit()
         cursor.close()
@@ -34,9 +36,9 @@ class Crud:
         cursor = coon.cursor()
         cursor.execute(f"""
                 UPDATE contacts
-                SET first_name = %s ,last_name = %s ,phone_number = %s
+                SET id = %s ,first_name = %s ,last_name = %s ,phone_number = %s
                 WHERE id  = %s """,
-                (data.first_name,data.last_name,data.phone_number,item_id))
+                (item_id,data["first_name"],data["last_name"],data["phone_number"],item_id))
         coon.commit()
         cursor.close()
         cursor.close()
@@ -66,13 +68,6 @@ print(Crud.get_all_contacts())
 
 
 
-
-
-
-# Crud.get_all_contacts()
-# Crud.create_contact({"first_name":"SSSS","last_name":"dsfdgt","phone_number":"dsafgfsgdddh"})
-# print(Crud.get_all_contacts())
-#
 
 
 

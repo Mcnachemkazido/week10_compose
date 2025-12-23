@@ -2,8 +2,10 @@ from fastapi import FastAPI
 import uvicorn
 from pydantic import BaseModel
 from models.CRUD import Crud
+from models.contact import Contact
 
-class Contact(BaseModel):
+class UserContact(BaseModel):
+    contact_id:int | None
     first_name:str
     last_name:str
     phone_number:str
@@ -11,8 +13,9 @@ class Contact(BaseModel):
 app = FastAPI()
 
 @app.post("/contacts")
-def create_contact(data:Contact):
-    return Crud.create_contact(data)
+def create_contact(data:UserContact):
+    object_contact = Contact(data.first_name,data.last_name,data.phone_number)
+    return Crud.create_contact(object_contact.contact_to_dict())
 
 
 @app.get("/contacts")
@@ -21,8 +24,9 @@ def get_all_contacts():
 
 
 @app.put("/contacts/{id}")
-def update_contact(id,data:Contact):
-    return Crud.update_contact(id,data)
+def update_contact(id,data:UserContact):
+    object_contact = Contact(data.first_name, data.last_name, data.phone_number)
+    return Crud.update_contact(id,object_contact.contact_to_dict())
 
 
 @app.delete("/contacts/{id}")
