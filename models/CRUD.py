@@ -55,6 +55,9 @@ class Crud:
 
 
 
+print(Crud.get_all_contacts())
+
+
 
 
 

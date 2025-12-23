@@ -15,4 +15,3 @@ class Connection:
         return pymysql.connect(user=self.user,password=self.password,
                                host=self.host,database=self.database)
 
-
