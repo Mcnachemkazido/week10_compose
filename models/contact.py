@@ -8,10 +8,12 @@ class Contact:
 
     def contact_to_dict(self):
         return {
-            "item_id":self.contact_id,
+            "contact_id":self.contact_id,
             "first_name":self.first_name,
             "last_name":self.last_name,
             "phone_number":self.phone_number
         }
+
+
 
 
