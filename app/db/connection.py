@@ -2,10 +2,10 @@ import os
 from dotenv import load_dotenv
 import pymysql
 
+load_dotenv()
 
 class Database:
     def __init__(self):
-        load_dotenv()
         self.user = os.getenv("DB_USER")
         self.password = os.getenv("DB_PASSWORD")
         self.host = os.getenv("DB_HOST")

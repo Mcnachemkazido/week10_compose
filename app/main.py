@@ -1,8 +1,7 @@
 from fastapi import FastAPI
-import uvicorn
 from pydantic import BaseModel
-from app.utils.crud import DatabaseService
-from app.models.contact import Contact
+from utils.crud import DatabaseService
+from models.contact import Contact
 
 class UserContact(BaseModel):
     contact_id:int | None
