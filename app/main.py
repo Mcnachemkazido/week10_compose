@@ -50,3 +50,4 @@ def delete_contact(id):
         return DatabaseService.delete_contact(id)
     except Exception as e:
         print(e)
+

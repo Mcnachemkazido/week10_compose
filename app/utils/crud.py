@@ -58,10 +58,6 @@ class DatabaseService:
 
 
 
-print(Crud.get_all_contacts())
-
-
-
 
 
 
