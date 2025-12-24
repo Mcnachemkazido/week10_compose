@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import pymysql
 
 
-class Connection:
+class Database:
     def __init__(self):
         load_dotenv()
         self.user = os.getenv("DB_USER")
