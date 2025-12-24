@@ -4,7 +4,6 @@ from utils.crud import DatabaseService
 from models.contact import Contact
 
 class UserContact(BaseModel):
-    contact_id:int | None
     first_name:str
     last_name:str
     phone_number:str

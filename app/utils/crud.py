@@ -8,9 +8,9 @@ class DatabaseService:
         cursor = coon.cursor()
         cursor.execute("""
         INSERT INTO contacts 
-        (id,first_name, last_name, phone_number) 
-        VALUES (%s,%s,%s,%s) """
-        ,(data["contact_id"],data["first_name"],data["last_name"],data["phone_number"]))
+        (first_name, last_name, phone_number) 
+        VALUES (%s,%s,%s) """
+        ,(data["first_name"],data["last_name"],data["phone_number"]))
 
         new_id = cursor.lastrowid
         coon.commit()
@@ -36,9 +36,9 @@ class DatabaseService:
         cursor = coon.cursor()
         cursor.execute(f"""
                 UPDATE contacts
-                SET id = %s ,first_name = %s ,last_name = %s ,phone_number = %s
+                SET first_name = %s ,last_name = %s ,phone_number = %s
                 WHERE id  = %s """,
-                (item_id,data["first_name"],data["last_name"],data["phone_number"],item_id))
+                (data["first_name"],data["last_name"],data["phone_number"],item_id))
         coon.commit()
         cursor.close()
         cursor.close()
