@@ -12,6 +12,9 @@ class Connection:
         self.database=os.getenv("DB_DATABASE")
 
     def get_connection(self):
-        return pymysql.connect(user=self.user,password=self.password,
-                               host=self.host,database=self.database)
+        try:
+            return pymysql.connect(user=self.user,password=self.password,
+                                   host=self.host,database=self.database)
+        except Exception as e:
+            print(e)
 
