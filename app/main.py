@@ -23,18 +23,28 @@ def create_contact(data:UserContact):
 
 @app.get("/contacts")
 def get_all_contacts():
-    return Crud.get_all_contacts()
+    try:
+        return Crud.get_all_contacts()
+    except Exception as e:
+        print(e)
 
 
 @app.put("/contacts/{id}")
 def update_contact(id,data:UserContact):
-    object_contact = Contact(data.first_name, data.last_name, data.phone_number)
-    return Crud.update_contact(id,object_contact.contact_to_dict())
+    try:
+        object_contact = Contact(data.first_name, data.last_name, data.phone_number)
+        return Crud.update_contact(id,object_contact.contact_to_dict())
+    except Exception as e:
+        print(e)
+
 
 
 @app.delete("/contacts/{id}")
 def delete_contact(id):
-    return Crud.delete_contact(id)
+    try:
+        return Crud.delete_contact(id)
+    except Exception as e:
+        print(e)
 
 
 
