@@ -9,7 +9,7 @@ class Database:
         self.user = os.getenv("DB_USER")
         self.password = os.getenv("DB_PASSWORD")
         self.host = os.getenv("DB_HOST")
-        self.database=os.getenv("DB_DATABASE")
+        self.database=os.getenv("DB_NAME")
 
     def get_connection(self):
         try:
